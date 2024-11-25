@@ -151,7 +151,8 @@ async function getCSSRules(
               .then((metadata) => embedFonts(metadata, options))
               .then((cssText) =>
                 parseCSS(cssText).forEach((rule) => {
-                  inline.insertRule(rule, sheet.cssRules.length)
+                  // https://github.com/bubkoo/html-to-image/pull/384/files
+                  inline.insertRule(rule, inline.cssRules.length)
                 }),
               )
               .catch((err: unknown) => {
